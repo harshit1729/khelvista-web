@@ -41,21 +41,60 @@
         </div>
     </section>
 
-    <!-- Playo Booking Section -->
-    <section style="padding: var(--spacing-lg) var(--spacing-md);">
-        <div class="container" style="max-width: 800px; text-align: center;">
-            <h2 style="margin-bottom: var(--spacing-md);">📱 Book Online Instantly</h2>
-            <p style="color: var(--text-secondary); font-size: 1.125rem; margin-bottom: var(--spacing-lg);">
-                Reserve your slot now through Playo - India's largest sports venue booking platform
-            </p>
-            <a href="https://playo.co/venues/bongaigaon/khelvista-gwjwnpuri-guwahati" target="_blank"
-                rel="noopener noreferrer" class="btn btn-primary" style="font-size: 1.25rem; padding: 1.25rem 3rem;">
-                <span>Book on Playo</span>
-                <span>→</span>
-            </a>
-            <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: var(--spacing-md);">
-                ✓ Instant confirmation &nbsp; • &nbsp; ✓ Secure payment &nbsp; • &nbsp; ✓ Best prices
-            </p>
+    <!-- Booking Options Section -->
+    <section style="padding: var(--spacing-xl) var(--spacing-md);">
+        <div class="container" style="max-width: 1100px;">
+            <div class="section-header">
+                <h2 class="section-title">Book Your Slot</h2>
+                <p>Choose your preferred booking method</p>
+            </div>
+
+            <div
+                style="display: grid; grid-template-columns: 1fr auto 1fr; gap: var(--spacing-lg); align-items: center; margin-top: var(--spacing-lg);">
+                <!-- Call Us Option -->
+                <div class="card" style="text-align: center; padding: var(--spacing-lg);">
+                    <h3 style="margin-bottom: var(--spacing-md);">📞 Call Us</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: var(--spacing-lg);">
+                        Get instant confirmation by calling us directly
+                    </p>
+                    <a href="tel:+916002036204" class="btn btn-primary"
+                        style="font-size: 1.35rem; padding: 1.25rem 2.5rem; width: 100%;">
+                        <span>+91 6002036204</span>
+                    </a>
+                </div>
+
+                <!-- OR Divider -->
+                <div
+                    style="font-size: 1.5rem; font-weight: 700; color: var(--text-muted); padding: 0 var(--spacing-md);">
+                    OR
+                </div>
+
+                <!-- Playo Option -->
+                <div class="card" style="text-align: center; padding: var(--spacing-lg);">
+                    <h3 style="margin-bottom: var(--spacing-md);">📱 Book on Playo</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: var(--spacing-lg);">
+                        Reserve through India's largest sports platform
+                    </p>
+                    <a href="https://playo.co/venues/bongaigaon/khelvista-gwjwnpuri-guwahati" target="_blank"
+                        rel="noopener noreferrer" class="btn btn-primary"
+                        style="font-size: 1.35rem; padding: 1.25rem 2.5rem; width: 100%;">
+                        <span>Book on Playo →</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile responsive -->
+            <style>
+                @media (max-width: 768px) {
+                    section div[style*="grid-template-columns: 1fr auto 1fr"] {
+                        grid-template-columns: 1fr !important;
+                    }
+
+                    section div[style*="grid-template-columns: 1fr auto 1fr"]>div:nth-child(2) {
+                        padding: var(--spacing-md) 0 !important;
+                    }
+                }
+            </style>
         </div>
     </section>
 
