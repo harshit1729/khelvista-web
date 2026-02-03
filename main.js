@@ -143,10 +143,8 @@ if (contactForm) {
             return;
         }
 
-        // Simulate form submission
-        // In production, this would send to a backend API
-        showFormMessage('Thank you! We\'ve received your booking request and will contact you soon.', 'success');
-        contactForm.reset();
+        // Show error message directing to call
+        showFormMessage('⚠️ Oops! There was an error submitting your request. Please call us directly at +91 6002036204 to book your slot.', 'error');
 
         // Log to console (for demonstration)
         console.log('Form submitted:', data);
