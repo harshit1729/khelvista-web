@@ -220,7 +220,7 @@ nav.scrolled {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    min-height: 120vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -237,7 +237,7 @@ nav.scrolled {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('hero-bg.jpg');
+    background-image: url('indoor-turf.jpg');
     background-size: cover;
     background-position: center;
     opacity: 0.15;
