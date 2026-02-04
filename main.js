@@ -111,6 +111,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Set today's date as default in contact form
+const dateInput = document.getElementById('date');
+if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.value = today;
+
+    // Make entire field clickable to open calendar
+    dateInput.addEventListener('click', function () {
+        this.showPicker();
+    });
+}
+
 // Contact Form Handler with Google Apps Script
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
