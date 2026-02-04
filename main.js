@@ -186,15 +186,15 @@ inputs.forEach(input => {
     });
 });
 
-// Add parallax effect to hero section
-window.addEventListener('scroll', () => {
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.5;
-        hero.style.transform = `translateY(${parallax}px)`;
-    }
-});
+// Parallax effect disabled - was causing sections to scroll at different speeds
+// window.addEventListener('scroll', () => {
+//     const hero = document.querySelector('.hero');
+//     if (hero) {
+//         const scrolled = window.pageYOffset;
+//         const parallax = scrolled * 0.5;
+//         hero.style.transform = `translateY(${parallax}px)`;
+//     }
+// });
 
 // Initialize animations on page load
 window.addEventListener('load', () => {
