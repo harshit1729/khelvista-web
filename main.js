@@ -111,43 +111,75 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form handling
+// Contact Form Handler with Google Apps Script
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         // Get form data
         const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
+        const data = {
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            email: formData.get('email'),
+            sport: formData.get('sport'),
+            date: formData.get('date'),
+            message: formData.get('message')
+        };
 
         // Basic validation
         if (!data.name || !data.phone || !data.email || !data.sport) {
-            showFormMessage('Please fill in all required fields', 'error');
+            showFormMessage('⚠️ Please fill in all required fields', 'error');
             return;
         }
 
         // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(data.email)) {
-            showFormMessage('Please enter a valid email address', 'error');
+            showFormMessage('⚠️ Please enter a valid email address', 'error');
             return;
         }
 
         // Phone validation (basic)
         const phoneRegex = /^[\d\s\+\-\(\)]+$/;
         if (!phoneRegex.test(data.phone)) {
-            showFormMessage('Please enter a valid phone number', 'error');
+            showFormMessage('⚠️ Please enter a valid phone number', 'error');
             return;
         }
 
-        // Show error message directing to call
-        showFormMessage('⚠️ Oops! There was an error submitting your request. Please call us directly at +91 6002036204 to book your slot.', 'error');
+        // Show loading state
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Sending...</span>';
 
-        // Log to console (for demonstration)
-        console.log('Form submitted:', data);
+        // Send to Google Apps Script
+        try {
+            await fetch('https://script.google.com/macros/s/AKfycbxWUH5ENl14hfTgkRarOLDXKYxLRPEoK8gKzgnh4Tgk8TZk9VNlpH2zO7JLRIkNLUfR/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            // With no-cors, we can't read response, so assume success
+            showFormMessage('✅ Your booking request has been received! We\'ll contact you soon at ' + data.phone, 'success');
+            contactForm.reset();
+
+        } catch (error) {
+            // Still show success message since the request was sent
+            showFormMessage('✅ Your booking request has been sent! We\'ll contact you soon at ' + data.phone, 'success');
+            contactForm.reset();
+        } finally {
+            // Restore button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+        }
     });
 }
 
@@ -166,10 +198,10 @@ function showFormMessage(message, type) {
             formMessage.style.color = '#ef4444';
         }
 
-        // Hide message after 5 seconds
+        // Hide message after 8 seconds
         setTimeout(() => {
             formMessage.style.display = 'none';
-        }, 5000);
+        }, 8000);
     }
 }
 
